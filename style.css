@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #210d35 0%,
+            #0c0618 45%,
+            #020107 100%
+        );
+
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+}
+
+#galaxy {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+}
+
+.subtitle {
+    font-size: 10px;
+    letter-spacing: 6px;
+
+    color: #e9a5ff;
+
+    opacity: 0.8;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(27px, 5vw, 43px);
+
+    font-weight: 300;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #d44cff,
+        0 0 25px #9c27ff;
+
+    margin-bottom: 0;
+}
+
+.heart-container {
+    width: min(90vw, 520px);
+    height: min(70vw, 430px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(0 0 15px #e52cff)
+        drop-shadow(0 0 35px #8d2cff);
+
+    transition: transform 0.3s ease;
+}
+
+.heart-container:hover {
+    transform: scale(1.04);
+}
+
+.heart-container:active {
+    transform: scale(0.92);
+}
+
+#heart {
+    width: 100%;
+    height: 100%;
+}
+
+#tapText {
+    margin-top: -5px;
+
+    font-size: 15px;
+
+    color: #f1b4ff;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px #d946ff;
+
+    animation: floating 1.8s infinite ease-in-out;
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
+}
+
+#birthdayMessage {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 90%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        transform 0.8s cubic-bezier(.17,.67,.32,1.3),
+        opacity 0.5s ease;
+}
+
+#birthdayMessage.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.birthday,
+.leave {
+    display: block;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px currentColor,
+        0 0 25px currentColor;
+}
+
+.birthday {
+    font-size: clamp(25px, 6vw, 50px);
+    color: #ff8bea;
+}
+
+.leave {
+    font-size: clamp(20px, 5vw, 38px);
+    color: #c58cff;
+}
+
+.decoration {
+    margin-top: 20px;
+
+    color: #ec8bff;
+
+    letter-spacing: 10px;
+
+    font-size: 15px;
+
+    animation: shine 2s infinite alternate;
+}
+
+@keyframes shine {
+
+    from {
+        opacity: 0.4;
+
+        text-shadow:
+            0 0 5px #d44cff;
+    }
+
+    to {
+        opacity: 1;
+
+        text-shadow:
+            0 0 20px #ff55e9;
+    }
+}
+
+body.finished h1,
+body.finished .subtitle,
+body.finished #tapText {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@media (max-width: 600px) {
+
+    .subtitle {
+        font-size: 8px;
+        letter-spacing: 4px;
+    }
+
+    #tapText {
+        font-size: 13px;
+    }
+
+}
